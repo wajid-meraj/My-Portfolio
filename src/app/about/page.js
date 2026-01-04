@@ -18,7 +18,7 @@ export default function About() {
 
         {/* Image */}
         <div className="flex justify-center">
-          <div className="relative w-64 h-64 rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
+          <div className="relative w-77 h-100 rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
             <Image
               src="/IMG_2462.jpg"
               alt="Wajid Ansari"
