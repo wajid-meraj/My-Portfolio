@@ -37,7 +37,7 @@ export default function About() {
         <div>
           <p className="text-gray-400 text-lg leading-relaxed">
             Hi, I’m{" "}
-            <span className="text-white font-semibold">Wajid Ansari</span>, a
+            <span className="text-blue font-semibold">Wajid Ansari</span>, a
             B.Tech Computer Science student and a passionate{" "}
             <span className="text-blue-400 font-medium">
               Full Stack Web Developer
