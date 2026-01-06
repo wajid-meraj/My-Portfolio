@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-center">
