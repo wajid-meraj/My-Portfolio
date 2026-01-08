@@ -50,7 +50,7 @@ export default function Projects() {
       {/* CTA */}
       <div className="mt-20 text-center">
         <Link
-          href="https://github.com/"
+          href="https://github.com/wajid-meraj"
           target="_blank"
           className="inline-block px-8 py-3 rounded-xl bg-blue-600
                      hover:bg-blue-500 transition font-semibold"
