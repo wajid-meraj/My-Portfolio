@@ -73,17 +73,17 @@ export default function Footer() {
               {[
                 {
                   icon: <FaGithub />,
-                  href: "https://github.com/",
+                  href: "https://github.com/wajid-meraj",
                   label: "GitHub",
                 },
                 {
                   icon: <FaLinkedin />,
-                  href: "https://linkedin.com/",
+                  href: "https://linkedin.com/in/wajidmeraj",
                   label: "LinkedIn",
                 },
                 {
                   icon: <FaEnvelope />,
-                  href: "mailto:wajid@email.com",
+                  href: "mailto:wajid4me7@email.com",
                   label: "Email",
                 },
               ].map((item) => (
