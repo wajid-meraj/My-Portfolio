@@ -56,17 +56,26 @@ export default function Skills() {
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {group.items.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="flex items-center gap-3 bg-gray-950 border border-gray-800 
-                               rounded-xl px-4 py-3 hover:border-blue-500/60 
-                               hover:scale-105 transition"
-                  >
-                    <span className="text-xl">{skill.icon}</span>
-                    <span className="text-gray-300 text-sm font-medium">
-                      {skill.name}
-                    </span>
-                  </div>
+                  
+                 <div
+  key={skill.name}
+  className="group flex items-center gap-3 
+             bg-gray-950 border border-gray-800 
+             rounded-xl px-4 py-3 
+             transition-all duration-300 ease-out
+             hover:border-blue-500/70
+             hover:-translate-y-1
+             hover:shadow-[0_8px_30px_rgba(59,130,246,0.25)]"
+>
+  <span className="text-xl transition-transform duration-300 group-hover:scale-110">
+    {skill.icon}
+  </span>
+
+  <span className="text-gray-300 text-sm font-medium transition-colors duration-300 group-hover:text-white">
+    {skill.name}
+  </span>
+</div>
+
                 ))}
               </div>
             </div>
