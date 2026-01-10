@@ -9,7 +9,7 @@ export default function Projects() {
       link: "#",
     },
     {
-      title: "Portfolio Website",
+      title: "E-Commerce Store",
       tech: "Next.js, Tailwind CSS",
       link: "#",
     },
