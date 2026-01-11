@@ -18,6 +18,11 @@ export default function Projects() {
       tech: "React, Node.js, MongoDB",
       link: "#",
     },
+    {
+      title: "Community Platform",
+      tech: "React, Node.js, MongoDB",
+      link: "#",
+    },
   ];
 
   return (
