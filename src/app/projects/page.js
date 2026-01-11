@@ -28,6 +28,11 @@ export default function Projects() {
       tech: "React, Node.js, MongoDB",
       link: "#",
     },
+    {
+      title: "my blog website ",
+      tech: "React, Node.js, MongoDB",
+      link: "#",
+    },
   ];
 
   return (
