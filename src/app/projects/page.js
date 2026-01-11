@@ -18,21 +18,37 @@ export default function Projects() {
       tech: "React, Node.js, MongoDB",
       link: "#",
     },
-    {
-      title: " my portfolio",
-      tech: "React, Node.js, MongoDB",
-      link: "#",
-    },
-     {
-      title: " my website ",
+        {
+      title: "Community Platform",
       tech: "React, Node.js, MongoDB",
       link: "#",
     },
         {
-      title: "my blog website ",
+      title: "Community Platform",
       tech: "React, Node.js, MongoDB",
       link: "#",
     },
+        {
+      title: "Community Platform",
+      tech: "React, Node.js, MongoDB",
+      link: "#",
+    },
+        {
+      title: "Community Platform",
+      tech: "React, Node.js, MongoDB",
+      link: "#",
+    },
+        {
+      title: "Community Platform",
+      tech: "React, Node.js, MongoDB",
+      link: "#",
+    },
+        {
+      title: "Community Platform",
+      tech: "React, Node.js, MongoDB",
+      link: "#",
+    },
+    
   ];
 
   return (
