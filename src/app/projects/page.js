@@ -19,7 +19,7 @@ export default function Projects() {
       link: "#",
     },
     {
-      title: "Community Platform",
+      title: " my portfolio",
       tech: "React, Node.js, MongoDB",
       link: "#",
     },
