@@ -38,7 +38,7 @@ export default function About() {
           <p className="text-gray-400 text-lg leading-relaxed">
             Hi, I’m{" "}
             <span className="text-blue font-semibold">Wajid Ansari</span>, a
-            B.Tech Computer  and a passionate{" "}
+            B.Tech Computer Science student and a passionate{" "}
             <span className="text-blue-400 font-medium">
               Full Stack Web Developer
             </span>.  
