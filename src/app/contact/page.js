@@ -114,7 +114,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-white text-sm sm:text-base">Location</h3>
-                    <p className="text-gray-400 text-xs sm:text-sm">Remote / Worldwide</p>
+                    <p className="text-gray-400 text-xs sm:text-sm">Siwan Bihar</p>
                   </div>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-white text-sm sm:text-base">Email</h3>
-                    <p className="text-gray-400 text-xs sm:text-sm">contact@example.com</p>
+                    <p className="text-gray-400 text-xs sm:text-sm">wajid4me7@gamil.com.com</p>
                   </div>
                 </div>
               </div>
