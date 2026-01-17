@@ -21,10 +21,10 @@ export default function Footer() {
     <>
       <footer className="relative mt-28 bg-gray-950 text-gray-400 overflow-hidden">
 
-        {/* Ambient Glow */}
+        {/* Ambient Glow 
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-500/10 blur-3xl pointer-events-none" />
 
-        {/* Divider */}
+        {/* Divider 
         <div className="relative h-[1px] bg-gradient-to-r from-transparent via-blue-500/60 to-transparent" />
 
         {/* Content */}

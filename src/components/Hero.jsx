@@ -1,7 +1,7 @@
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center">
+    <section className="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-gray-950 via-gray-900 to-blue-950">
       <h1 className="text-4xl md:text-6xl font-bold">
         Hi, I am <span className="text-blue-500">Wajid Ansari</span>
       </h1>

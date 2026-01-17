@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section className="px-6 py-28 max-w-6xl mx-auto">
+    <section className="px-6 py-28  mx-auto bg-gradient-to-br from-gray-950 via-gray-900 to-blue-950  overflow-hidden relative">
       
       {/* Heading */}
       <div className="mb-14">
