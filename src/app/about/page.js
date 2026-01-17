@@ -99,9 +99,8 @@ export default function About() {
 
             <Link
               href="/contact"
-              className="px-7 py-3 rounded-xl border border-gray-700 
-                         hover:border-blue-500 hover:text-white transition 
-                         text-sm font-semibold"
+             className="px-7 py-3 rounded-xl bg-blue-600 
+                         hover:bg-blue-500 transition text-sm font-semibold"
             >
               Contact Me
             </Link>
