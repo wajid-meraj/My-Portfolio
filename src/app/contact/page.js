@@ -1,6 +1,6 @@
 "use client";
 
-import { FaUser, FaEnvelope, FaPaperPlane, FaMapMarkerAlt, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaPaperPlane, FaMapMarkerAlt, FaLinkedin, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import { useState } from "react";
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
@@ -140,6 +140,12 @@ export default function Contact() {
                   </a>
                   <a href="https://github.com/wajid-meraj" target="_blank" rel="noopener noreferrer" className="p-2 sm:p-3 bg-gray-800 hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-110 group">
                     <FaGithub className="text-white text-lg sm:text-xl group-hover:rotate-12 transition-transform" />
+                  </a>
+                  <a href="https://github.com/wajid-meraj" target="_blank" rel="noopener noreferrer" className="p-2 sm:p-3 bg-gray-800 hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-110 group">
+                    <FaTwitter className="text-white text-lg sm:text-xl group-hover:rotate-12 transition-transform" />
+                  </a>
+                  <a href="https://github.com/wajid-meraj" target="_blank" rel="noopener noreferrer" className="p-2 sm:p-3 bg-gray-800 hover:bg-blue-600 rounded-xl transition-all duration-300 hover:scale-110 group">
+                    <FaInstagram className="text-white text-lg sm:text-xl group-hover:rotate-12 transition-transform" />
                   </a>
                 </div>
               </div>
