@@ -135,7 +135,7 @@ export default function Contact() {
               <div className="p-5 sm:p-6 bg-gray-900 bg-opacity-50 border border-gray-800 rounded-2xl backdrop-blur-sm">
                 <h3 className="font-semibold text-white text-sm sm:text-base mb-3 sm:mb-4">Connect Online</h3>
                 <div className="flex gap-3">
-                  <a href="https://linkedin.com/in/wajid-meraj" target="_blank" rel="noopener noreferrer" className="p-2 sm:p-3 bg-gray-800 hover:bg-blue-600 rounded-xl transition-all duration-300 hover:scale-110 group">
+                  <a href="https://linkedin.com/in/wajidmeraj" target="_blank" rel="noopener noreferrer" className="p-2 sm:p-3 bg-gray-800 hover:bg-blue-600 rounded-xl transition-all duration-300 hover:scale-110 group">
                     <FaLinkedin className="text-white text-lg sm:text-xl group-hover:rotate-12 transition-transform" />
                   </a>
                   <a href="https://github.com/wajid-meraj" target="_blank" rel="noopener noreferrer" className="p-2 sm:p-3 bg-gray-800 hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-110 group">
