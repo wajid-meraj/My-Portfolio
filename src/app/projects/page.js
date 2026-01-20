@@ -14,7 +14,7 @@ export default function Projects() {
       link: "#",
     },
     {
-      title: "E-Commerce Store",
+      title: "E-Commerce website",
       tech: "Next.js, Tailwind CSS",
       link: "#",
     },
