@@ -14,11 +14,6 @@ export default function Projects() {
       link: "#",
     },
     {
-      title: "E-Commerce website",
-      tech: "Next.js, Tailwind CSS",
-      link: "#",
-    },
-    {
       title: "Community Platform",
       tech: "React, Node.js, MongoDB",
       link: "#",
