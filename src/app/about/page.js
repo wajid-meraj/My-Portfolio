@@ -23,7 +23,7 @@ export default function About() {
                           hover:scale-105 transition duration-500">
             <div className="relative w-full h-full rounded-3xl overflow-hidden bg-gray-950">
               <Image
-                src="/IMG_2462.png"
+                src="Copilot_20260811_145916.png"
                 alt="Wajid Ansari"
                 fill
                 className="object-cover"
