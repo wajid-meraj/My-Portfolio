@@ -1,224 +1,332 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
-import { FiMenu, FiX, FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import {
+  FiMenu,
+  FiX,
+  FiDownload,
+  FiGithub,
+  FiLinkedin,
+  FiMail,
+} from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
+
+const links = [
+  { name: "Home", id: "home" },
+  { name: "About", id: "about" },
+  { name: "Skills", id: "skills" },
+  { name: "Projects", id: "projects" },
+  { name: "Contact", id: "contact" },
+];
+
+const socialLinks = [
+  {
+    name: "GitHub",
+    icon: FiGithub,
+    href: "https://github.com/wajid-meraj",
+  },
+  {
+    name: "LinkedIn",
+    icon: FiLinkedin,
+    href: "https://linkedin.com/in/wajidmeraj",
+  },
+  {
+    name: "Email",
+    icon: FiMail,
+    href: "mailto:wajid4me7@gmail.com",
+  },
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
-  const links = [
-    { name: "Home", id: "home" },
-    { name: "About", id: "about" },
-    { name: "Skills", id: "skills" },
-    { name: "Projects", id: "projects" },
-    { name: "Contact", id: "contact" },
-  ];
-
-  const socialLinks = [
-    { icon: FiGithub, href: "https://github.com/wajid-meraj" },
-    { icon: FiLinkedin, href: "https://linkedin.com/in/wajidmeraj" },
-    { icon: FiMail, href: "mailto:wajid4me7@email.com" },
-  ];
-
+  // Scroll to section
   const handleScroll = (id: string) => {
     const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-      setActive(id);
-      setOpen(false);
-    }
-  };
 
-  useEffect(() => {
-    const sections = links.map((link) => document.getElementById(link.id));
+    if (!section) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
-        });
-      },
-      {
-        threshold: 0.5,
-        rootMargin: "-10% 0px -10% 0px",
-      }
-    );
+    const navbarHeight = 80;
 
-    sections.forEach((section) => {
-      if (section) observer.observe(section);
+    const sectionTop =
+      section.getBoundingClientRect().top +
+      window.scrollY -
+      navbarHeight;
+
+    window.scrollTo({
+      top: sectionTop,
+      behavior: "smooth",
     });
 
-    const handleScroll = () => {
+    setActive(id);
+    setOpen(false);
+  };
+
+  // Detect scroll + active section
+  useEffect(() => {
+    const handleWindowScroll = () => {
       setScrolled(window.scrollY > 20);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleWindowScroll);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              b.intersectionRatio - a.intersectionRatio
+          )[0];
+
+        if (visibleSection) {
+          setActive(visibleSection.target.id);
+        }
+      },
+      {
+        threshold: [0.2, 0.4, 0.6, 0.8],
+        rootMargin: "-20% 0px -55% 0px",
+      }
+    );
+
+    links.forEach((link) => {
+      const section = document.getElementById(link.id);
+
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
     return () => {
+      window.removeEventListener("scroll", handleWindowScroll);
       observer.disconnect();
-      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Close mobile menu with Escape
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
+
+  // Prevent body scrolling when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-gray-950/95 backdrop-blur-xl border-b border-gray-800/50 shadow-2xl shadow-blue-500/5"
-          : "bg-gray-950/80 backdrop-blur-lg border-b border-gray-800"
+          ? "border-b border-gray-800/50 bg-gray-950/95 shadow-2xl shadow-blue-500/5 backdrop-blur-xl"
+          : "border-b border-gray-800 bg-gray-950/80 backdrop-blur-lg"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
 
-        {/* Logo with gradient */}
-        <motion.h1
+        {/* Logo */}
+        <motion.button
+          type="button"
           onClick={() => handleScroll("home")}
-          className="text-2xl sm:text-3xl font-extrabold cursor-pointer"
+          className="cursor-pointer text-2xl font-extrabold sm:text-3xl"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          aria-label="Go to homepage"
         >
-          <span className="text-white tracking-wide">Wajid</span>
+          <span className="tracking-wide text-white">
+            Wajid
+          </span>
+
           <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             .dev
           </span>
-        </motion.h1>
+        </motion.button>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-1 lg:gap-2">
+        {/* Desktop Navigation */}
+        <div className="hidden items-center gap-1 md:flex lg:gap-2">
+
           {links.map((link) => (
             <motion.button
               key={link.id}
+              type="button"
               onClick={() => handleScroll(link.id)}
-              className={`relative px-3 lg:px-4 py-2 rounded-lg font-medium transition-all duration-300
-                ${
-                  active === link.id
-                    ? "text-white bg-blue-500/10"
-                    : "text-gray-400 hover:text-white hover:bg-gray-800/50"
-                }`}
+              aria-current={
+                active === link.id ? "page" : undefined
+              }
+              className={`relative rounded-lg px-3 py-2 font-medium transition-all duration-300 lg:px-4 ${
+                active === link.id
+                  ? "bg-blue-500/10 text-white"
+                  : "text-gray-400 hover:bg-gray-800/50 hover:text-white"
+              }`}
               whileHover={{ y: -1 }}
               whileTap={{ scale: 0.95 }}
             >
               {link.name}
+
               {active === link.id && (
                 <motion.span
                   layoutId="activeTab"
-                  className="absolute inset-0 rounded-lg bg-blue-500/10 -z-10"
-                  transition={{ type: "spring", duration: 0.5 }}
+                  className="absolute inset-0 -z-10 rounded-lg bg-blue-500/10"
+                  transition={{
+                    type: "spring",
+                    duration: 0.5,
+                  }}
                 />
               )}
+
               <span
-                className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300
-                ${active === link.id ? "w-1/2" : "w-0"}`}
+                className={`absolute bottom-0 left-1/2 h-[2px] -translate-x-1/2 bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300 ${
+                  active === link.id ? "w-1/2" : "w-0"
+                }`}
               />
             </motion.button>
           ))}
 
-          {/* Social Icons */}
-          <div className="flex items-center gap-1 ml-2 pl-4 border-l border-gray-700/50">
-            {socialLinks.map((social, index) => (
-              <motion.a
-                key={index}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-gray-400 hover:text-white hover:bg-gray-800/50 rounded-lg transition-colors"
-                whileHover={{ y: -2, scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <social.icon size={18} />
-              </motion.a>
-            ))}
+          {/* Social Links */}
+          <div className="ml-2 flex items-center gap-1 border-l border-gray-700/50 pl-4">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+
+              return (
+                <motion.a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-800/50 hover:text-white"
+                  whileHover={{ y: -2, scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Icon size={18} />
+                </motion.a>
+              );
+            })}
           </div>
 
-          {/* Resume Button with gradient */}
+          {/* Resume */}
           <motion.a
             href="/resume.pdf"
             download
-            className="ml-2 flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-5 py-2.5 rounded-xl text-white font-medium transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
+            className="ml-2 flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-5 py-2.5 font-medium text-white shadow-lg shadow-blue-500/25 transition-all hover:from-blue-700 hover:to-purple-700 hover:shadow-blue-500/40"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FiDownload className="animate-bounce" />
+            <FiDownload size={18} />
             Resume
           </motion.a>
         </div>
 
         {/* Mobile Menu Button */}
         <motion.button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-white text-3xl p-2 hover:bg-gray-800/50 rounded-lg transition-colors"
+          type="button"
+          onClick={() => setOpen((prev) => !prev)}
+          className="rounded-lg p-2 text-3xl text-white transition-colors hover:bg-gray-800/50 md:hidden"
           whileTap={{ scale: 0.9 }}
+          aria-label={
+            open
+              ? "Close navigation menu"
+              : "Open navigation menu"
+          }
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
         >
           {open ? <FiX /> : <FiMenu />}
         </motion.button>
       </div>
 
-      {/* Mobile Menu with animation */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden border-t border-gray-800/50"
+            className="overflow-hidden border-t border-gray-800/50 md:hidden"
           >
-            <div className="bg-gray-950/95 backdrop-blur-xl px-4 py-6 space-y-4">
+            <div className="space-y-4 bg-gray-950/95 px-4 py-6 backdrop-blur-xl">
+
+              {/* Mobile Links */}
               {links.map((link, index) => (
                 <motion.button
                   key={link.id}
+                  type="button"
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.05 }}
+                  transition={{
+                    delay: index * 0.05,
+                  }}
                   onClick={() => handleScroll(link.id)}
-                  className={`block w-full text-left px-4 py-3 rounded-xl font-medium transition-all
-                    ${
-                      active === link.id
-                        ? "text-white bg-blue-500/10 border border-blue-500/20"
-                        : "text-gray-400 hover:text-white hover:bg-gray-800/50"
-                    }`}
+                  aria-current={
+                    active === link.id
+                      ? "page"
+                      : undefined
+                  }
+                  className={`block w-full rounded-xl px-4 py-3 text-left font-medium transition-all ${
+                    active === link.id
+                      ? "border border-blue-500/20 bg-blue-500/10 text-white"
+                      : "text-gray-400 hover:bg-gray-800/50 hover:text-white"
+                  }`}
                 >
                   {link.name}
                 </motion.button>
               ))}
 
-              {/* Mobile Social Icons */}
-              <div className="flex justify-center gap-2 pt-4 border-t border-gray-800/50">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-gray-800/50 hover:bg-gray-700/50 rounded-xl text-gray-400 hover:text-white transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <social.icon size={20} />
-                  </motion.a>
-                ))}
+              {/* Mobile Social Links */}
+              <div className="flex justify-center gap-2 border-t border-gray-800/50 pt-4">
+                {socialLinks.map((social) => {
+                  const Icon = social.icon;
+
+                  return (
+                    <motion.a
+                      key={social.name}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.name}
+                      className="rounded-xl bg-gray-800/50 p-3 text-gray-400 transition-colors hover:bg-gray-700/50 hover:text-white"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <Icon size={20} />
+                    </motion.a>
+                  );
+                })}
               </div>
 
+              {/* Mobile Resume */}
               <motion.a
                 href="/resume.pdf"
                 download
-                className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-3.5 rounded-xl text-white font-medium transition-all shadow-lg shadow-blue-500/25"
+                className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 py-3.5 font-medium text-white shadow-lg shadow-blue-500/25 transition-all hover:from-blue-700 hover:to-purple-700"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <FiDownload />
+                <FiDownload size={18} />
                 Download Resume
               </motion.a>
+
             </div>
           </motion.div>
         )}
