@@ -300,13 +300,6 @@ export default function Skills() {
             </div>
           ))}
         </div>
-
-        {/* Bottom Tech Stack */}
-        <div className="mt-16 text-center">
-          <p className="text-sm text-gray-500">
-            Full-Stack Developer • AI Engineer • Cloud-Ready Developer
-          </p>
-        </div>
       </div>
     </section>
   );
